@@ -5,13 +5,6 @@ import { API_BASE_URL, fetchMe } from '../api/client';
 import { useAuth } from '../auth/AuthProvider';
 import { Alert } from '../components/Alert';
 
-const ROLE_LABELS: Record<string, string> = {
-  player: 'Jugador',
-  owner: 'Dueño de sede',
-  staff: 'Staff',
-  admin: 'Administrador',
-};
-
 function initials(name: string, email: string): string {
   const source = name.trim() || email;
   const parts = source.split(/\s+/).filter(Boolean);
@@ -135,7 +128,6 @@ export function HomePage() {
           <section className="panel">
             <div className="panel-heading">
               <h2>Tu perfil</h2>
-              <span className="pill">{ROLE_LABELS[current.role] ?? current.role}</span>
             </div>
 
             <dl className="detail-list">

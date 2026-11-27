@@ -1,7 +1,6 @@
 export interface PublicUser {
   id: string;
   email: string;
-  role: 'player' | 'owner' | 'staff' | 'admin';
   status: 'active' | 'suspended' | 'deleted';
   emailVerified: boolean;
   displayName: string | null;
