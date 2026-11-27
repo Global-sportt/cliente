@@ -34,6 +34,18 @@ export class ApiError extends Error {
   }
 }
 
+/**
+ * React Query retry policy: a 4xx answer is deterministic, so retrying it only
+ * delays the message the user needs to see. Network and 5xx failures get one
+ * extra attempt.
+ */
+export function shouldRetry(failureCount: number, error: unknown): boolean {
+  if (error instanceof ApiError && error.status >= 400 && error.status < 500) {
+    return false;
+  }
+  return failureCount < 1;
+}
+
 export function setSessionListener(
   listener: (session: AuthSession | null) => void,
 ): () => void {
@@ -140,7 +152,7 @@ function isRefreshable(path: string): boolean {
   ].some((prefix) => path.startsWith(prefix));
 }
 
-async function request<T>(
+export async function request<T>(
   path: string,
   init: RequestInit = {},
   retry = true,

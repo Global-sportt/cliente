@@ -76,6 +76,9 @@ export function HomePage() {
             reservas<span>.</span>
           </Link>
           <div className="app-header-actions">
+            <Link className="header-link" to="/panel">
+              Panel
+            </Link>
             <a
               className="header-link"
               href={`${API_BASE_URL}/docs`}

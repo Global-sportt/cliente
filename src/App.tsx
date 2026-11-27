@@ -5,8 +5,10 @@ import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
 import { HomePage } from './pages/HomePage';
 import { LoginPage } from './pages/LoginPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { PanelPage } from './pages/PanelPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage';
+import { SpacesPage } from './pages/SpacesPage';
 import { VerifyEmailPage } from './pages/VerifyEmailPage';
 
 export default function App() {
@@ -21,6 +23,11 @@ export default function App() {
 
       <Route element={<ProtectedRoute />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/panel" element={<PanelPage />} />
+        <Route
+          path="/panel/:establishmentId/espacios"
+          element={<SpacesPage />}
+        />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
